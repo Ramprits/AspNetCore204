@@ -23,7 +23,7 @@ namespace AspNetCoreApplication {
         public override int SaveChanges () {
             foreach (var entry in ChangeTracker.Entries ()
                     .Where (e => e.State == EntityState.Added)) {
-                entry.Property ("CreatedDate").CurrentValue = DateTime.Now;
+                entry.Property ("CreatedDate").CurrentValue = DateTime.Today;
             }
             return base.SaveChanges ();
         }
