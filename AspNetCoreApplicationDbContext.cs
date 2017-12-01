@@ -11,6 +11,7 @@ namespace AspNetCoreApplication {
         public DbSet<Organization> Organizations { get; set; }
         public DbSet<BusinessUnit> BusinessUnit { get; set; }
         public DbSet<Campaign> Campaign { get; set; }
+        public DbSet<Category> Category { get; set; }
 
         protected override void OnModelCreating (ModelBuilder modelBuilder) {
             base.OnModelCreating (modelBuilder);
@@ -19,6 +20,8 @@ namespace AspNetCoreApplication {
             modelBuilder.Entity<Organization> ().Property (c => c.RowVersion).ValueGeneratedOnAddOrUpdate ().IsConcurrencyToken ();
             modelBuilder.Entity<BusinessUnit> ().Property (l => l.RowVersion).ValueGeneratedOnAddOrUpdate ().IsConcurrencyToken ();
             modelBuilder.Entity<Campaign> ().Property (c => c.RowVersion).ValueGeneratedOnAddOrUpdate ().IsConcurrencyToken ();
+            modelBuilder.Entity<Category> ().Property (c => c.RowVersion).ValueGeneratedOnAddOrUpdate ().IsConcurrencyToken ();
+
         }
         public override int SaveChanges () {
             foreach (var entry in ChangeTracker.Entries ()

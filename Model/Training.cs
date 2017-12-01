@@ -22,12 +22,18 @@ namespace AspNetCoreApplication.Model {
         public string Language { get; set; }
         public bool IsApproved { get; set; }
         public string IsCPF { get; set; }
+        // Navigation
         public Guid BusinessUnitId { get; set; }
         public BusinessUnit BusinessUnit { get; set; }
+
         public Guid ModalityId { get; set; }
         public Modality Modality { get; set; }
+
         public Guid OrganizationId { get; set; }
         public Organization Organization { get; set; }
+
+        public Guid CategoryId { get; set; }
+        public Category Category { get; set; }
 
     }
 }

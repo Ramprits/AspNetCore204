@@ -11,9 +11,10 @@ using System;
 namespace AspNetCoreApplication.Migrations
 {
     [DbContext(typeof(AspNetCoreApplicationDbContext))]
-    partial class AspNetCoreApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171130102111_Addcategory")]
+    partial class Addcategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,8 +80,6 @@ namespace AspNetCoreApplication.Migrations
                     b.Property<Guid>("CategoryId")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<DateTime>("CreatedDate");
-
                     b.Property<string>("Description");
 
                     b.Property<string>("ImageUrl");
@@ -89,13 +88,9 @@ namespace AspNetCoreApplication.Migrations
 
                     b.Property<string>("Name");
 
-                    b.Property<byte[]>("RowVersion")
-                        .IsConcurrencyToken()
-                        .ValueGeneratedOnAddOrUpdate();
-
                     b.HasKey("CategoryId");
 
-                    b.ToTable("Category","dbo");
+                    b.ToTable("Category");
                 });
 
             modelBuilder.Entity("AspNetCoreApplication.Model.Modality", b =>
