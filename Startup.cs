@@ -30,6 +30,11 @@ namespace AspNetCoreApplication {
                 });
             services.AddAutoMapper ();
             services.AddScoped<ICampaignRepository, CampaignRepository> ();
+            services.AddScoped<ICategoryRepository, CategoryRepository> ();
+            services.AddScoped<ITrainingRepository, TrainingRepository> ();
+            services.AddScoped<IModalityRepository, ModalityRepository> ();
+            services.AddScoped<IBusinessRepository, BusinessRepository> ();
+            services.AddScoped<IOrganizationRepository, OrganizationRepository> ();
         }
 
         public void Configure (IApplicationBuilder app, IHostingEnvironment env,
