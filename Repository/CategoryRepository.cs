@@ -28,6 +28,10 @@ namespace AspNetCoreApplication.Repository {
             throw new NotImplementedException ();
         }
 
+        public async Task<Category> GetCategoryWithTrainingAsync (Guid CategoryId) {
+            return await _ctx.Category.Include (t => t.Training).FirstOrDefaultAsync (c => c.CategoryId == CategoryId);
+        }
+
         public Task<Category> InsertCategoryAsync (Category Category) {
             throw new NotImplementedException ();
         }

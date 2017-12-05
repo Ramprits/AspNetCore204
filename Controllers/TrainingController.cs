@@ -22,6 +22,8 @@ namespace AspNetCoreApplication.Controllers {
         public async Task<IActionResult> GetTrainings () {
             var getTrainins = await _repository.TrainingsAsync ();
             return Ok (_mapper.Map<IEnumerable<TrainingVm>> (getTrainins));
+            // return Ok (getTrainins);
+
         }
 
         [HttpGet ("{trainingId}", Name = "GetTraining")]

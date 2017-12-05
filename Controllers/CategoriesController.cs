@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using AspNetCoreApplication.Model;
@@ -21,6 +22,15 @@ namespace AspNetCoreApplication.Controllers {
         public async Task<IActionResult> GetCategories () {
             var getCategories = await _repository.CategorysAsync ();
             return Ok (_mapper.Map<IEnumerable<CategoriesVm>> (getCategories));
+        }
+
+        [HttpGet ("{CategoryId}")]
+        public async Task<IActionResult> GetCategoryWithTraining (Guid CategoryId) {
+            if (CategoryId == null) {
+                return NotFound ($"Category with {CategoryId} not found !");
+            }
+            var getCategoryWithTraining = await _repository.GetCategoryWithTrainingAsync (CategoryId);
+            return Ok (getCategoryWithTraining);
         }
     }
 }

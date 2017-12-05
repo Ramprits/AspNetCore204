@@ -1,7 +1,11 @@
-use SG_OpenTraining
-Select Id,Name,[Description],AverageCost AS Cost , ConcernedPublic as comments From dbo.Training
-WHERE IsActive = 1
+USE AspNetcoreApplication
+SELECT * FROM dbo.Training
+Where CategoryId = '275c7eaf-5fcf-43d5-8a2f-6f5b143d0500'
 
+Select * From Category
 
-Select * From dbo.TrainingCategory
-
+-- Update rows in table 'Training'
+UPDATE Training
+SET
+    CategoryId   = '275c7eaf-5fcf-43d5-8a2f-6f5b143d0500'
+    

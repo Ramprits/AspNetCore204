@@ -7,6 +7,7 @@ namespace AspNetCoreApplication.Repository.Interface {
     public interface ICategoryRepository {
         Task<IEnumerable<Category>> CategorysAsync ();
         Task<Category> CategoryAsync (Guid CategoryId);
+        Task<Category> GetCategoryWithTrainingAsync (Guid CategoryId);
         Task<Category> InsertCategoryAsync (Category Category);
         Task<bool> UpdateCategoryAsync (Guid CategoryId);
         Task<bool> DeleteCategoryAsync (Guid CategoryId);

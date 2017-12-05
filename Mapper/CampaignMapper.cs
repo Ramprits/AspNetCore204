@@ -7,7 +7,12 @@ namespace AspNetCoreApplication.Mapper {
         public CampaignMapper () {
             CreateMap<Campaign, CampaignVm> ().ReverseMap ();
             CreateMap<CampaignForCreationDto, Campaign> ().ReverseMap ();
-            CreateMap<Training, TrainingVm> ().ReverseMap ();
+            CreateMap<Training, TrainingVm> ()
+                .ForMember (x => x.BusinessUnitName, opt => opt.MapFrom (x => x.BusinessUnit.Name))
+                .ForMember (x => x.ModalityName, opt => opt.MapFrom (x => x.Modality.Name))
+                .ForMember (x => x.OrganizationName, opt => opt.MapFrom (x => x.Organization.Name))
+                .ReverseMap ();
+
             CreateMap<CreateTraining, Training> ().ReverseMap ();
 
             CreateMap<Organization, OrganizationVm> ()

@@ -49,7 +49,8 @@ namespace AspNetCoreApplication.Repository {
         }
 
         public async Task<IEnumerable<Training>> TrainingsAsync () {
-            return await _ctx.Trainings.ToListAsync ();
+            return await _ctx.Trainings.Include (c => c.Category)
+                .Include (b => b.BusinessUnit).Include (m => m.Modality).ToListAsync ();
         }
 
         public Task<bool> UpdateTrainingAsync (Guid TrainingId) {
