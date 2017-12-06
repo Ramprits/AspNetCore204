@@ -32,6 +32,15 @@ namespace AspNetCoreApplication.Controllers {
             return Ok (_mapper.Map<TrainingVm> (getTrainins));
         }
 
+        [HttpGet ("trainingbyCategory/{categoryId}")]
+        public IActionResult Get (Guid categoryId) {
+            var getTrainingByCategory = _repository.TrainingByCategoryAsync (categoryId);
+            if (getTrainingByCategory == null) {
+                return NotFound ($"category with {categoryId} not found?");
+            }
+            return Ok (getTrainingByCategory);
+        }
+
         [HttpPost]
         public async Task<IActionResult> PostTraining ([FromBody] CreateTraining AddTraining) {
             var training = _mapper.Map<Training> (AddTraining);

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using AspNetCoreApplication.Model;
 using AspNetCoreApplication.Repository.Interface;
@@ -11,7 +12,6 @@ namespace AspNetCoreApplication.Repository {
 
         public TrainingRepository (AspNetCoreApplicationDbContext ctx) {
             _ctx = ctx;
-
         }
         public async Task<bool> DeleteTrainingAsync (Guid TrainingId) {
             var deleteCampaign = await _ctx.Trainings.FirstOrDefaultAsync (c => c.TrainingId == TrainingId);
@@ -42,6 +42,11 @@ namespace AspNetCoreApplication.Repository {
 
         public async Task<Training> TrainingAsync (Guid TrainingId) {
             return await _ctx.Trainings.FirstOrDefaultAsync (t => t.TrainingId == TrainingId);
+        }
+
+        public IQueryable<Training> TrainingByCategoryAsync (Guid CategoryId) {
+            var get = _ctx.Trainings.Where (x => x.CategoryId == CategoryId);
+            return get;
         }
 
         public async Task<bool> TrainingExistAsync (Guid TrainingId) {
