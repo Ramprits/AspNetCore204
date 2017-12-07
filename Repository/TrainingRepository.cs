@@ -7,7 +7,7 @@ using AspNetCoreApplication.Repository.Interface;
 using Microsoft.EntityFrameworkCore;
 
 namespace AspNetCoreApplication.Repository {
-    public class TrainingRepository : ITrainingRepository {
+    public class TrainingRepository : ITrainingRepository, IDisposable {
         private readonly AspNetCoreApplicationDbContext _ctx;
 
         public TrainingRepository (AspNetCoreApplicationDbContext ctx) {
@@ -44,9 +44,9 @@ namespace AspNetCoreApplication.Repository {
             return await _ctx.Trainings.FirstOrDefaultAsync (t => t.TrainingId == TrainingId);
         }
 
-        public IQueryable<Training> TrainingByCategoryAsync (Guid CategoryId) {
-            var get = _ctx.Trainings.Where (x => x.CategoryId == CategoryId);
-            return get;
+        public async Task<IQueryable<Training>> TrainingByCategoryAsync (Guid CategoryId) {
+            var getTrainingByCategory = await _ctx.Trainings.Where (x => x.CategoryId == CategoryId).ToListAsync ();
+            return getTrainingByCategory.AsQueryable ();
         }
 
         public async Task<bool> TrainingExistAsync (Guid TrainingId) {
@@ -60,6 +60,20 @@ namespace AspNetCoreApplication.Repository {
 
         public Task<bool> UpdateTrainingAsync (Guid TrainingId) {
             throw new NotImplementedException ();
+        }
+
+        private bool disposed = false;
+        protected virtual void Dispose (bool disposing) {
+            if (!this.disposed) {
+                if (disposing) {
+                    _ctx.Dispose ();
+                }
+            }
+            this.disposed = true;
+        }
+        public void Dispose () {
+            Dispose (true);
+            GC.SuppressFinalize (this);
         }
     }
 }

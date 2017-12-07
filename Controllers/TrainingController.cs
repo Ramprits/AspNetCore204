@@ -50,5 +50,9 @@ namespace AspNetCoreApplication.Controllers {
             }
             return Created ("GetTraining", null);
         }
+        protected override void Dispose (bool disposing) {
+            _repository.Dispose ();
+            base.Dispose (disposing);
+        }
     }
 }
