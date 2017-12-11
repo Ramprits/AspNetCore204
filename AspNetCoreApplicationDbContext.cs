@@ -1,10 +1,12 @@
 using System;
 using System.Linq;
 using AspNetCoreApplication.Model;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace AspNetCoreApplication {
-    public class AspNetCoreApplicationDbContext : DbContext {
+    public class AspNetCoreApplicationDbContext : IdentityDbContext<IdentityUser> {
         public AspNetCoreApplicationDbContext (DbContextOptions<AspNetCoreApplicationDbContext> options) : base (options) { }
         public DbSet<Training> Trainings { get; set; }
         public DbSet<Modality> Modalities { get; set; }

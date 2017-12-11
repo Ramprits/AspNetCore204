@@ -1,14 +1,19 @@
-﻿using AspNetCoreApplication.Repository;
+﻿using System.Text;
+using AspNetCoreApplication.Model;
+using AspNetCoreApplication.Repository;
 using AspNetCoreApplication.Repository.Interface;
 using AutoMapper;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 
 namespace AspNetCoreApplication {
@@ -23,11 +28,33 @@ namespace AspNetCoreApplication {
             services.AddDbContext<AspNetCoreApplicationDbContext> (options => {
                 options.UseSqlServer (Configuration.GetConnectionString ("ApplicationConnection"));
             });
+            services.AddIdentity<IdentityUser, IdentityRole> ().AddEntityFrameworkStores<AspNetCoreApplicationDbContext> ();
             services.AddMvc ()
                 .AddJsonOptions (opt => {
                     opt.SerializerSettings.ReferenceLoopHandling =
                         ReferenceLoopHandling.Ignore;
                 });
+            var signingKey = new SymmetricSecurityKey (Encoding.UTF8.GetBytes ("this is the secret phrase"));
+            services.AddAuthentication (options => {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            }).AddJwtBearer (cfg => {
+                cfg.RequireHttpsMetadata = false;
+                cfg.SaveToken = true;
+                cfg.TokenValidationParameters = new TokenValidationParameters () {
+                    IssuerSigningKey = signingKey,
+                    ValidateAudience = false,
+                    ValidateIssuer = false,
+                    ValidateLifetime = false,
+                    ValidateIssuerSigningKey = true
+                };
+            });
+            services.AddCors (options => options.AddPolicy ("Cors", builder => {
+                builder
+                    .AllowAnyOrigin ()
+                    .AllowAnyMethod ()
+                    .AllowAnyHeader ();
+            }));
             services.AddAutoMapper ();
             services.AddScoped<ICampaignRepository, CampaignRepository> ();
             services.AddScoped<ICategoryRepository, CategoryRepository> ();
@@ -62,11 +89,8 @@ namespace AspNetCoreApplication {
                     });
                 });
             }
-            app.UseCors ((corsPolicyBuilder) => {
-                corsPolicyBuilder.AllowAnyOrigin ();
-                corsPolicyBuilder.AllowAnyMethod ();
-                corsPolicyBuilder.AllowAnyHeader ();
-            });
+            app.UseAuthentication ();
+            app.UseCors ("Cors");
             app.UseMvc ();
         }
     }
