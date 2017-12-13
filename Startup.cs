@@ -62,6 +62,7 @@ namespace AspNetCoreApplication {
             services.AddScoped<IModalityRepository, ModalityRepository> ();
             services.AddScoped<IBusinessRepository, BusinessRepository> ();
             services.AddScoped<IOrganizationRepository, OrganizationRepository> ();
+            services.AddScoped<IContactRepository, ContactRepository> ();
         }
 
         public void Configure (IApplicationBuilder app, IHostingEnvironment env,

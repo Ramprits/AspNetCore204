@@ -6,22 +6,26 @@ using AspNetCoreApplication.ModelDto;
 using AspNetCoreApplication.Repository.Interface;
 using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace AspNetCoreApplication.Controllers {
+
     [Route ("api/Categories")]
     public class CategoriesController : Controller {
         private readonly ICategoryRepository _repository;
         private readonly IMapper _mapper;
+        private readonly AspNetCoreApplicationDbContext _ctx;
 
-        public CategoriesController (ICategoryRepository repository, IMapper mapper) {
+        public CategoriesController (ICategoryRepository repository, IMapper mapper, AspNetCoreApplicationDbContext ctx) {
             _repository = repository;
             _mapper = mapper;
+            _ctx = ctx;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetCategories () {
-            var getCategories = await _repository.CategorysAsync ();
-            return Ok (_mapper.Map<IEnumerable<CategoriesVm>> (getCategories));
+            var getCategories = await _ctx.Category.Include (t => t.Trainings).ToListAsync ();
+            return Ok (getCategories);
         }
 
         [HttpGet ("{CategoryId}")]

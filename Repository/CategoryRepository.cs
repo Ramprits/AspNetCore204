@@ -21,7 +21,7 @@ namespace AspNetCoreApplication.Repository {
         }
 
         public async Task<IEnumerable<Category>> CategorysAsync () {
-            return await _ctx.Category.ToListAsync ();
+            return await _ctx.Category.Include (t => t.Trainings).ToListAsync ();
         }
 
         public Task<bool> DeleteCategoryAsync (Guid CategoryId) {
@@ -29,7 +29,7 @@ namespace AspNetCoreApplication.Repository {
         }
 
         public async Task<Category> GetCategoryWithTrainingAsync (Guid CategoryId) {
-            return await _ctx.Category.Include (t => t.Training).FirstOrDefaultAsync (c => c.CategoryId == CategoryId);
+            return await _ctx.Category.Include (t => t.Trainings).FirstOrDefaultAsync (c => c.CategoryId == CategoryId);
         }
 
         public Task<Category> InsertCategoryAsync (Category Category) {

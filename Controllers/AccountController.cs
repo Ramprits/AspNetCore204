@@ -8,7 +8,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 
 namespace AspNetCoreApplication.Controllers {
+
     [Produces ("application/json")]
+
     [Route ("api/Account")]
 
     public class AccountController : Controller {
