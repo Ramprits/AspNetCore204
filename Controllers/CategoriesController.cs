@@ -24,7 +24,7 @@ namespace AspNetCoreApplication.Controllers {
 
         [HttpGet]
         public async Task<IActionResult> GetCategories () {
-            var getCategories = await _ctx.Category.Include (t => t.Trainings).ToListAsync ();
+            var getCategories = await _repository.CategorysAsync ();
             return Ok (getCategories);
         }
 
