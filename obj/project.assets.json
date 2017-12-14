@@ -2925,6 +2925,34 @@
           "lib/netstandard1.3/NuGet.Frameworks.dll": {}
         }
       },
+      "NWebsec.AspNetCore.Core/1.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "1.0.2",
+          "NETStandard.Library": "1.6.1",
+          "System.Text.RegularExpressions": "4.3.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/NWebsec.AspNetCore.Core.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/NWebsec.AspNetCore.Core.dll": {}
+        }
+      },
+      "NWebsec.AspNetCore.Middleware/1.1.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Abstractions": "1.0.2",
+          "NETStandard.Library": "1.6.1",
+          "NWebsec.AspNetCore.Core": "1.1.0"
+        },
+        "compile": {
+          "lib/netstandard1.3/NWebsec.AspNetCore.Middleware.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard1.3/NWebsec.AspNetCore.Middleware.dll": {}
+        }
+      },
       "Remotion.Linq/2.1.1": {
         "type": "package",
         "dependencies": {
@@ -8082,6 +8110,32 @@
         "nuget.frameworks.nuspec"
       ]
     },
+    "NWebsec.AspNetCore.Core/1.1.0": {
+      "sha512": "LKyL2tmHjc0w/OUWt5TlACNCjtbKL0HP/Wn9rKDkLPXgsCxfn273jisoxEbYa+PsnPjifSwrKE0zMcGmFPE7uQ==",
+      "type": "package",
+      "path": "nwebsec.aspnetcore.core/1.1.0",
+      "files": [
+        "lib/net451/NWebsec.AspNetCore.Core.dll",
+        "lib/net451/NWebsec.AspNetCore.Core.xml",
+        "lib/netstandard1.3/NWebsec.AspNetCore.Core.dll",
+        "lib/netstandard1.3/NWebsec.AspNetCore.Core.xml",
+        "nwebsec.aspnetcore.core.1.1.0.nupkg.sha512",
+        "nwebsec.aspnetcore.core.nuspec"
+      ]
+    },
+    "NWebsec.AspNetCore.Middleware/1.1.0": {
+      "sha512": "PlZ12p+ouSJXj5/6aFL26AI18VryK3+FH+sOgt7Cj+S5uUu1HdqD2FZXWts0P4Cf5gY8a2gzahV5KKY4VP0gug==",
+      "type": "package",
+      "path": "nwebsec.aspnetcore.middleware/1.1.0",
+      "files": [
+        "lib/net451/NWebsec.AspNetCore.Middleware.dll",
+        "lib/net451/NWebsec.AspNetCore.Middleware.xml",
+        "lib/netstandard1.3/NWebsec.AspNetCore.Middleware.dll",
+        "lib/netstandard1.3/NWebsec.AspNetCore.Middleware.xml",
+        "nwebsec.aspnetcore.middleware.1.1.0.nupkg.sha512",
+        "nwebsec.aspnetcore.middleware.nuspec"
+      ]
+    },
     "Remotion.Linq/2.1.1": {
       "sha512": "IJn0BqkvwEDpP+2qjvci7n4/a9f7DhKESLWb2/uG4xQh3rTkGTBUz69bI4IivCoKkTFAqjXxYDZw2K/npohjsw==",
       "type": "package",
@@ -13187,7 +13241,8 @@
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 3.2.0",
       "Microsoft.AspNetCore.All >= 2.0.3",
       "Microsoft.NETCore.App >= 2.0.0",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.1"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.1",
+      "NWebsec.AspNetCore.Middleware >= 1.1.0"
     ]
   },
   "packageFolders": {
@@ -13197,11 +13252,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\R1163213\\Downloads\\Angular5\\AspNetCoreApplication\\AspNetCoreApplication.csproj",
+      "projectUniqueName": "c:\\Users\\R1163213\\Downloads\\Angular5\\AspNetCoreApplication\\AspNetCoreApplication.csproj",
       "projectName": "AspNetCoreApplication",
-      "projectPath": "C:\\Users\\R1163213\\Downloads\\Angular5\\AspNetCoreApplication\\AspNetCoreApplication.csproj",
+      "projectPath": "c:\\Users\\R1163213\\Downloads\\Angular5\\AspNetCoreApplication\\AspNetCoreApplication.csproj",
       "packagesPath": "C:\\Users\\R1163213\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\R1163213\\Downloads\\Angular5\\AspNetCoreApplication\\obj\\",
+      "outputPath": "c:\\Users\\R1163213\\Downloads\\Angular5\\AspNetCoreApplication\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -13245,6 +13300,10 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "2.0.1"
+          },
+          "NWebsec.AspNetCore.Middleware": {
+            "target": "Package",
+            "version": "1.1.0"
           }
         },
         "imports": [
