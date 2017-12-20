@@ -13252,11 +13252,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\Users\\R1163213\\Downloads\\Angular5\\AspNetCoreApplication\\AspNetCoreApplication.csproj",
+      "projectUniqueName": "C:\\Users\\R1163213\\Downloads\\Angular5\\AspNetCoreApplication\\AspNetCoreApplication.csproj",
       "projectName": "AspNetCoreApplication",
-      "projectPath": "c:\\Users\\R1163213\\Downloads\\Angular5\\AspNetCoreApplication\\AspNetCoreApplication.csproj",
+      "projectPath": "C:\\Users\\R1163213\\Downloads\\Angular5\\AspNetCoreApplication\\AspNetCoreApplication.csproj",
       "packagesPath": "C:\\Users\\R1163213\\.nuget\\packages\\",
-      "outputPath": "c:\\Users\\R1163213\\Downloads\\Angular5\\AspNetCoreApplication\\obj\\",
+      "outputPath": "C:\\Users\\R1163213\\Downloads\\Angular5\\AspNetCoreApplication\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

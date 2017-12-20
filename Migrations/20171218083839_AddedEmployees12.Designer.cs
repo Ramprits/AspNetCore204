@@ -11,9 +11,10 @@ using System;
 namespace AspNetCoreApplication.Migrations
 {
     [DbContext(typeof(AspNetCoreApplicationDbContext))]
-    partial class AspNetCoreApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171218083839_AddedEmployees12")]
+    partial class AddedEmployees12
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
