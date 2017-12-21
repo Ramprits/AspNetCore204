@@ -11,9 +11,10 @@ using System;
 namespace AspNetCoreApplication.Migrations
 {
     [DbContext(typeof(AspNetCoreApplicationDbContext))]
-    partial class AspNetCoreApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171221115452_newTrainingFeaturePrimaryKetAdded")]
+    partial class newTrainingFeaturePrimaryKetAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -162,8 +163,6 @@ namespace AspNetCoreApplication.Migrations
                     b.Property<int>("Duration");
 
                     b.Property<string>("Name");
-
-                    b.Property<Guid>("TechnologyId");
 
                     b.HasKey("Id");
 

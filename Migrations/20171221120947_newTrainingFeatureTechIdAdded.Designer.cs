@@ -11,9 +11,10 @@ using System;
 namespace AspNetCoreApplication.Migrations
 {
     [DbContext(typeof(AspNetCoreApplicationDbContext))]
-    partial class AspNetCoreApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20171221120947_newTrainingFeatureTechIdAdded")]
+    partial class newTrainingFeatureTechIdAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

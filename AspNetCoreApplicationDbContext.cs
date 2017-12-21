@@ -16,6 +16,8 @@ namespace AspNetCoreApplication {
         public DbSet<Category> Category { get; set; }
         public DbSet<Contact> Contact { get; set; }
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<NewTraining> NewTrainings { get; set; }
+        public DbSet<Technologies> Technologies { get; set; }
 
         protected override void OnModelCreating (ModelBuilder modelBuilder) {
             base.OnModelCreating (modelBuilder);
