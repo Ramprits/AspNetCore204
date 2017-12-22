@@ -1,11 +1,12 @@
 using System;
 using System.Threading.Tasks;
+using AspNetCoreApplication.Helper;
 using AspNetCoreApplication.Model;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace AspNetCoreApplication.Controllers {
-    [Route ("api/newTrainings")]
+    [Route ("api/newTrainings"), NoCache]
     public class NewTrainingController : Controller {
         private readonly AspNetCoreApplicationDbContext _context;
 
@@ -27,6 +28,9 @@ namespace AspNetCoreApplication.Controllers {
 
         [HttpPost]
         public async Task<IActionResult> Post ([FromBody] NewTraining entity) {
+            // if (entity.TechnologyId) {
+
+            // }
             await _context.AddAsync (entity);
             await _context.SaveChangesAsync ();
             var newTraining = _context.NewTrainings.FirstOrDefaultAsync (x => x.Id == entity.Id);

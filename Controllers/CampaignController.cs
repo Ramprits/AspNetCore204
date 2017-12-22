@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using AspNetCoreApplication.Helper;
 using AspNetCoreApplication.Model;
 using AspNetCoreApplication.ModelDto;
 using AspNetCoreApplication.Repository.Interface;
@@ -11,7 +12,7 @@ using Microsoft.Extensions.Logging;
 
 namespace AspNetCoreApplication.Controllers {
 
-    [Route ("api/campaign")]
+    [Route ("api/campaign"), NoCache]
     public class CampaignController : Controller {
         private ICampaignRepository _repository;
         private readonly ILogger<CampaignController> _logger;
